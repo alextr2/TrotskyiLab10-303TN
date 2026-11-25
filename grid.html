@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .block {
+      margin: 3px;             
+      border: 1px solid #fff;  
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .header  { background: #5b9bd5; }
+    .block1  { background: #5ed1d4; }
+    .block2  { background: #e26b6b; }
+    .block3  { background: #32a374; }
+    .content { background: #ffc000; }
+    .sidebar { background: #6f7e80; }
+    .footer  { background: #c55a11; }
+
+    .header  { grid-area: header; }
+    .block1  { grid-area: b1; }
+    .block2  { grid-area: b2; }
+    .block3  { grid-area: b3; }
+    .content { grid-area: content; }
+    .sidebar { grid-area: sidebar; }
+    .footer  { grid-area: footer; }
+
+    .wrapper {
+      display: grid;
+      min-height: 100vh;      
+      grid-auto-rows: minmax(100px, 1fr); 
+      grid-template-areas:
+        "header"
+        "b1"
+        "b2"
+        "b3"
+        "content"
+        "sidebar"
+        "footer";
+    }
+
+    @media (min-width: 500px) {
+      .wrapper {
+        grid-template-areas:
+          "header  header"
+          "b1      b2"
+          "b3      b3"
+          "content content"
+          "sidebar sidebar"
+          "footer  footer";
+      }
+    }
+
+    @media (min-width: 750px) {
+      .wrapper {
+        grid-auto-rows: 1fr;
+        grid-template-areas:
+          "header  header  header"
+          "b1      b2      content"
+          "b3      b3      content"
+          "sidebar sidebar sidebar"
+          "footer  footer  footer";
+      }
+    }
+
+    @media (min-width: 950px) {
+      .wrapper {
+        grid-template-areas:
+          "header  header  header  sidebar"
+          "b1      b2      content sidebar"
+          "b3      b3      content sidebar"
+          "footer  footer  footer  footer";
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .block { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="block header">Header</div>
+    <div class="block block1">Block 1</div>
+    <div class="block block2">Block 2</div>
+    <div class="block block3">Block 3</div>
+    <div class="block content">Content</div>
+    <div class="block sidebar">Sidebar</div>
+    <div class="block footer">Footer</div>
+  </div>
+</body>
+</html>

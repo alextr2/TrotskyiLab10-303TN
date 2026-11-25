@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .block {
+      margin: 3px;             
+      border: 1px solid #fff;   
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .header  { background: #5b9bd5; }
+    .block1  { background: #5ed1d4; }
+    .block2  { background: #e26b6b; }
+    .block3  { background: #32a374; }
+    .content { background: #ffc000; }
+    .sidebar { background: #6f7e80; }
+    .footer  { background: #c55a11; }
+
+    .wrapper, .top, .left, .middle, .col, .row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper { min-height: 100vh; }  
+
+    .top, .left, .middle, .col, .row, .block {
+      flex: 1;
+    }
+
+    .block { min-height: 100px; }
+
+    @media (min-width: 500px) {
+      .row { flex-direction: row; }
+    }
+
+    @media (min-width: 750px) {
+      .top     { flex: 4; }   /* у верхній частині 4 рядки, у footer — 1 */
+      .left    { flex: 3; }   /* Header + 2 рядки середини = 3, Sidebar = 1 */
+      .middle  { flex-direction: row; flex: 2; }
+      .col     { flex: 3; }   /* 3 частини з 5 = 60% */
+      .content { flex: 2; }   /* 2 частини з 5 = 40% */
+      .block   { min-height: 0; }
+    }
+
+    @media (min-width: 950px) {
+      .top  { flex-direction: row; }
+      .left { flex: 4; }       /* 80% ширини, Sidebar — 20% */
+    }
+
+    @media (min-width: 1200px) {
+      .left  { flex: 3; }      /* 75% / 25% */
+      .block { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="top">
+      <div class="left">
+        <div class="block header">Header</div>
+        <div class="middle">
+          <div class="col">
+            <div class="row">
+              <div class="block block1">Block 1</div>
+              <div class="block block2">Block 2</div>
+            </div>
+            <div class="block block3">Block 3</div>
+          </div>
+          <div class="block content">Content</div>
+        </div>
+      </div>
+      <div class="block sidebar">Sidebar</div>
+    </div>
+    <div class="block footer">Footer</div>
+  </div>
+</body>
+</html>

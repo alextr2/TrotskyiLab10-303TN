@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Float</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .block {
+      margin: 3px;              
+      border: 1px solid #fff;  
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .header  { background: #5b9bd5; }
+    .block1  { background: #5ed1d4; }
+    .block2  { background: #e26b6b; }
+    .block3  { background: #32a374; }
+    .content { background: #ffc000; }
+    .sidebar { background: #6f7e80; }
+    .footer  { background: #c55a11; }
+
+    .block {
+      float: left;
+      width: calc(100% - 6px);
+      height: calc(100vh / 7 - 6px);
+      min-height: 80px;
+    }
+
+    .wrapper, .top, .left, .middle, .col, .row { overflow: hidden; }
+
+    /* clear: both — почати з нового рядка */
+    .middle, .footer { clear: both; }
+
+    @media (min-width: 500px) {
+      .block1, .block2 { width: calc(50% - 6px); }
+      .block { height: calc(100vh / 6 - 6px); }
+    }
+
+    @media (min-width: 750px) {
+      .col     { float: left; width: 60%; }
+      .content { width: calc(40% - 6px); }
+
+      .header, .block1, .block2, .block3,
+      .sidebar, .footer  { height: calc(20vh - 6px); }
+      .content           { height: calc(40vh - 6px); }
+    }
+
+    @media (min-width: 950px) {
+      .left    { float: left; width: 80%; }
+      .sidebar { width: calc(20% - 6px); }
+
+      .header           { height: calc(30vh - 6px); }
+      .block3           { height: calc(30vh - 6px); }
+      .content          { height: calc(50vh - 6px); }
+      .sidebar          { height: calc(80vh - 6px); }
+    }
+
+    @media (min-width: 1200px) {
+      .left    { width: 75%; }
+      .sidebar { width: calc(25% - 6px); }
+      .block   { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="top">
+      <div class="left">
+        <div class="block header">Header</div>
+        <div class="middle">
+          <div class="col">
+            <div class="row">
+              <div class="block block1">Block 1</div>
+              <div class="block block2">Block 2</div>
+            </div>
+            <div class="block block3">Block 3</div>
+          </div>
+          <div class="block content">Content</div>
+        </div>
+      </div>
+      <div class="block sidebar">Sidebar</div>
+    </div>
+    <div class="block footer">Footer</div>
+  </div>
+</body>
+</html>
